@@ -4,6 +4,7 @@ using LiteraLog.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiteraLog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class BookContextModelSnapshot : ModelSnapshot
+    [Migration("20240108100312_UpdatedColumns")]
+    partial class UpdatedColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,10 +39,6 @@ namespace LiteraLog.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Comment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -70,11 +69,8 @@ namespace LiteraLog.Migrations
                     b.Property<int>("Pages")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishedYear")
-                        .HasColumnType("datetime2");
-
-                    b.Property<float>("Rating")
-                        .HasColumnType("real");
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -83,6 +79,13 @@ namespace LiteraLog.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("publishedYear")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

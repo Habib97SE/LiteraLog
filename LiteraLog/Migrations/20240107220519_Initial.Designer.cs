@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LiteraLog.Migrations
 {
-    [DbContext(typeof(BookContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240107220519_Initial")]
     partial class Initial
     {
